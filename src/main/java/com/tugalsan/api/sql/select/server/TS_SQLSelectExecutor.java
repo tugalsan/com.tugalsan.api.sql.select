@@ -171,6 +171,18 @@ public class TS_SQLSelectExecutor {
         return pack.value0 == null ? TGS_ListUtils.of() : pack.value0;
     }
 
+    public List<List<TGS_SQLCellAbstract>> getTbl(boolean skipBytes) {
+        TGS_Pack1<List<List<TGS_SQLCellAbstract>>> pack = new TGS_Pack1();
+        walk(null, rs -> pack.value0 = rs.table.get(skipBytes));
+        return pack.value0 == null ? TGS_ListUtils.of() : pack.value0;
+    }
+
+    public List<List<TGS_SQLCellAbstract>> getTbl() {
+        TGS_Pack1<List<List<TGS_SQLCellAbstract>>> pack = new TGS_Pack1();
+        walk(null, rs -> pack.value0 = rs.table.get());
+        return pack.value0 == null ? TGS_ListUtils.of() : pack.value0;
+    }
+
     public List<Long> getLngLst() {
         TGS_Pack1<List<Long>> pack = new TGS_Pack1();
         walk(null, rs -> pack.value0 = rs.lngArr.get(0));
