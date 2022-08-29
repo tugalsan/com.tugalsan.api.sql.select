@@ -18,7 +18,7 @@ import java.util.*;
 
 public class TS_SQLSelectExecutor {
 
-    final private static TS_Log d = TS_Log.of(TS_SQLSelectExecutor.class.getSimpleName());
+    final private static TS_Log d = TS_Log.of(TS_SQLSelectExecutor.class);
 
     public TS_SQLSelectExecutor(TS_SQLConnAnchor anchor, CharSequence tableName) {
         this.anchor = anchor;

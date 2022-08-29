@@ -9,7 +9,7 @@ import com.tugalsan.api.sql.resultset.server.*;
 
 public class TS_SQLSelectStmtUtils {
 
-    final private static TS_Log d = TS_Log.of(TS_SQLSelectStmtUtils.class.getSimpleName());
+    final private static TS_Log d = TS_Log.of(TS_SQLSelectStmtUtils.class);
 
     //WARNING: CHECK TO SEE IF SQL IS SAFE!
     @Deprecated

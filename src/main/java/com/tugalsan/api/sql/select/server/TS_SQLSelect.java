@@ -7,7 +7,7 @@ import com.tugalsan.api.sql.conn.server.*;
 
 public class TS_SQLSelect {
 
-    final private static TS_Log d = TS_Log.of(TS_SQLSelect.class.getSimpleName());
+    final private static TS_Log d = TS_Log.of(TS_SQLSelect.class);
 
     public TS_SQLSelect(TS_SQLConnAnchor anchor, CharSequence tableName) {
         executor = new TS_SQLSelectExecutor(anchor, tableName);
