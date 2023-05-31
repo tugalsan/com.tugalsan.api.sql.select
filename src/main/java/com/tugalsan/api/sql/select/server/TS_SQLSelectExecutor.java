@@ -3,7 +3,7 @@ package com.tugalsan.api.sql.select.server;
 import com.tugalsan.api.runnable.client.*;
 import com.tugalsan.api.list.client.*;
 import com.tugalsan.api.log.server.*;
-import com.tugalsan.api.pack.client.*;
+import com.tugalsan.api.tuple.client.*;
 import com.tugalsan.api.sql.col.typed.client.*;
 import com.tugalsan.api.sql.cell.client.*;
 import com.tugalsan.api.sql.order.server.*;
@@ -106,7 +106,7 @@ public class TS_SQLSelectExecutor {
     }
 
     public List<TGS_SQLCellAbstract> getRow(int rowIdx) {
-        TGS_Pack1<List<TGS_SQLCellAbstract>> pack = new TGS_Pack1();
+        TGS_Tuple1<List<TGS_SQLCellAbstract>> pack = new TGS_Tuple1();
         walk(null, rs -> pack.value0 = rs.row.get(rowIdx));
         return pack.value0;
     }
@@ -118,32 +118,32 @@ public class TS_SQLSelectExecutor {
     }
 
     public TGS_Time getDate() {
-        TGS_Pack1<TGS_Time> pack = new TGS_Pack1();
+        TGS_Tuple1<TGS_Time> pack = new TGS_Tuple1();
         walk(null, rs -> pack.value0 = rs.date.get(0, 0));
         return pack.value0;
     }
 
     public TGS_Time getTime() {
-        TGS_Pack1<TGS_Time> pack = new TGS_Pack1();
+        TGS_Tuple1<TGS_Time> pack = new TGS_Tuple1();
         walk(null, rs -> pack.value0 = rs.time.get(0, 0));
         return pack.value0;
     }
 
     public byte[] getBlobBytes() {
-        TGS_Pack1<byte[]> pack = new TGS_Pack1();
+        TGS_Tuple1<byte[]> pack = new TGS_Tuple1();
         walk(null, rs -> pack.value0 = rs.bytes.get(0, 0));
         return pack.value0;
     }
 
     @Deprecated //u can use getStr instead
     public String getBlobStr() {
-        TGS_Pack1<String> pack = new TGS_Pack1();
+        TGS_Tuple1<String> pack = new TGS_Tuple1();
         walk(null, rs -> pack.value0 = rs.bytesStr.get(0, 0));
         return pack.value0;
     }
 
     public String getStr() {
-        TGS_Pack1<String> pack = new TGS_Pack1();
+        TGS_Tuple1<String> pack = new TGS_Tuple1();
         walk(null, rs -> {
             var cn = rs.col.name(0);
             if (TGS_SQLColTypedUtils.typeBytesStr(cn)) {
@@ -160,31 +160,31 @@ public class TS_SQLSelectExecutor {
     }
 
     public Long getLng() {
-        TGS_Pack1<Long> pack = new TGS_Pack1();
+        TGS_Tuple1<Long> pack = new TGS_Tuple1();
         walk(null, rs -> pack.value0 = rs.lng.get(0, 0));
         return pack.value0;
     }
 
     public List<String> getStrLst() {
-        TGS_Pack1<List<String>> pack = new TGS_Pack1();
+        TGS_Tuple1<List<String>> pack = new TGS_Tuple1();
         walk(null, rs -> pack.value0 = rs.strArr.get(0));
         return pack.value0 == null ? TGS_ListUtils.of() : pack.value0;
     }
 
     public List<List<TGS_SQLCellAbstract>> getTbl(boolean skipBytes) {
-        TGS_Pack1<List<List<TGS_SQLCellAbstract>>> pack = new TGS_Pack1();
+        TGS_Tuple1<List<List<TGS_SQLCellAbstract>>> pack = new TGS_Tuple1();
         walk(null, rs -> pack.value0 = rs.table.get(skipBytes));
         return pack.value0 == null ? TGS_ListUtils.of() : pack.value0;
     }
 
     public List<List<TGS_SQLCellAbstract>> getTbl() {
-        TGS_Pack1<List<List<TGS_SQLCellAbstract>>> pack = new TGS_Pack1();
+        TGS_Tuple1<List<List<TGS_SQLCellAbstract>>> pack = new TGS_Tuple1();
         walk(null, rs -> pack.value0 = rs.table.get());
         return pack.value0 == null ? TGS_ListUtils.of() : pack.value0;
     }
 
     public List<Long> getLngLst() {
-        TGS_Pack1<List<Long>> pack = new TGS_Pack1();
+        TGS_Tuple1<List<Long>> pack = new TGS_Tuple1();
         walk(null, rs -> pack.value0 = rs.lngArr.get(0));
         return pack.value0 == null ? TGS_ListUtils.of() : pack.value0;
     }
