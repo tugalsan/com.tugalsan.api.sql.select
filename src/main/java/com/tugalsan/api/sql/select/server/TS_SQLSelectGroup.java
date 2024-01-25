@@ -11,7 +11,7 @@ public class TS_SQLSelectGroup {
     public TS_SQLSelectGroup(TS_SQLSelectExecutor executor) {
         this.executor = executor;
     }
-    private TS_SQLSelectExecutor executor;
+    private final TS_SQLSelectExecutor executor;
 
     public TS_SQLSelectOrder group(int colIdx) {
         var colNames = TS_SQLConnColUtils.names(executor.anchor, executor.tableName);

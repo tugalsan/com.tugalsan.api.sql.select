@@ -5,7 +5,7 @@ public class TS_SQLSelectRowSizeLimit {
     public TS_SQLSelectRowSizeLimit(TS_SQLSelectExecutor executor) {
         this.executor = executor;
     }
-    private TS_SQLSelectExecutor executor;
+    private final TS_SQLSelectExecutor executor;
 
     public TS_SQLSelectExecutor rowSizeLimitNone() {
         return executor;

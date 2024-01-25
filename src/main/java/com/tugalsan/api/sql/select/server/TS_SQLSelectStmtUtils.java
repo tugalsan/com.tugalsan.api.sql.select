@@ -3,13 +3,12 @@ package com.tugalsan.api.sql.select.server;
 import java.sql.*;
 import java.util.*;
 import com.tugalsan.api.runnable.client.*;
-import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.sql.conn.server.*;
 import com.tugalsan.api.sql.resultset.server.*;
 
 public class TS_SQLSelectStmtUtils {
 
-    final private static TS_Log d = TS_Log.of(TS_SQLSelectStmtUtils.class);
+//    final private static TS_Log d = TS_Log.of(TS_SQLSelectStmtUtils.class);
 
     //WARNING: CHECK TO SEE IF SQL IS SAFE!
     @Deprecated

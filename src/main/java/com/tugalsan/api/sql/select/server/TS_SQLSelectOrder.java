@@ -11,7 +11,7 @@ public class TS_SQLSelectOrder {
     public TS_SQLSelectOrder(TS_SQLSelectExecutor executor) {
         this.executor = executor;
     }
-    private TS_SQLSelectExecutor executor;
+    private final TS_SQLSelectExecutor executor;
 
     public TS_SQLSelectRowIdxOffset orderAsc(String[] columns) {
         if (columns == null || columns.length == 0) {
