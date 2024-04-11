@@ -5,6 +5,7 @@ import com.tugalsan.api.sql.conn.server.TS_SQLConnColUtils;
 import com.tugalsan.api.sql.where.server.TS_SQLWhereConditions;
 import com.tugalsan.api.sql.where.server.TS_SQLWhereGroups;
 import com.tugalsan.api.sql.where.server.TS_SQLWhereUtils;
+import com.tugalsan.api.union.client.TGS_UnionExcuse;
 
 public class TS_SQLSelectWhere {
 
@@ -35,13 +36,16 @@ public class TS_SQLSelectWhere {
         return new TS_SQLSelectGroup(executor);
     }
 
-    public TS_SQLSelectExecutor whereFirstColumnAsId(long id) {
-        return whereConditionAnd(conditions -> {
-            conditions.lngEq(
-                    TS_SQLConnColUtils.names(executor.anchor, executor.tableName).get(0),
-                    id
-            );
-        }).groupNone().orderNone().rowIdxOffsetNone().rowSizeLimitNone();
+    public TGS_UnionExcuse<TS_SQLSelectExecutor> whereFirstColumnAsId(long id) {
+        var u_names = TS_SQLConnColUtils.names(executor.anchor, executor.tableName);
+        if (u_names.isExcuse()) {
+            return u_names.toExcuse();
+        }
+        return TGS_UnionExcuse.of(
+                whereConditionAnd(conditions -> {
+                    conditions.lngEq(u_names.value().get(0), id);
+                }).groupNone().orderNone().rowIdxOffsetNone().rowSizeLimitNone()
+        );
     }
 
     public TS_SQLSelectGroup whereConditionNone() {

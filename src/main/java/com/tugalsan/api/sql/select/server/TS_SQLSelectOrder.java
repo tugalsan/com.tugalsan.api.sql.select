@@ -3,6 +3,7 @@ package com.tugalsan.api.sql.select.server;
 import com.tugalsan.api.runnable.client.TGS_RunnableType1;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnColUtils;
 import com.tugalsan.api.sql.order.server.TS_SQLOrderUtils;
+import com.tugalsan.api.union.client.TGS_UnionExcuse;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,20 +50,26 @@ public class TS_SQLSelectOrder {
         return new TS_SQLSelectRowIdxOffset(executor);
     }
 
-    public TS_SQLSelectRowIdxOffset orderAsc(int colIdx) {
-        var colNames = TS_SQLConnColUtils.names(executor.anchor, executor.tableName);
-        if (colIdx < 0 || colIdx >= colNames.size()) {
-            return orderNone();
+    public TGS_UnionExcuse<TS_SQLSelectRowIdxOffset> orderAsc(int colIdx) {
+        var u_colNames = TS_SQLConnColUtils.names(executor.anchor, executor.tableName);
+        if (u_colNames.isExcuse()) {
+            return u_colNames.toExcuse();
         }
-        return orderAsc(colNames.get(colIdx));
+        if (colIdx < 0 || colIdx >= u_colNames.value().size()) {
+            return TGS_UnionExcuse.of(orderNone());
+        }
+        return TGS_UnionExcuse.of(orderAsc(u_colNames.value().get(colIdx)));
     }
 
-    public TS_SQLSelectRowIdxOffset orderDesc(int colIdx) {
-        var colNames = TS_SQLConnColUtils.names(executor.anchor, executor.tableName);
-        if (colIdx < 0 || colIdx >= colNames.size()) {
-            return orderNone();
+    public TGS_UnionExcuse<TS_SQLSelectRowIdxOffset> orderDesc(int colIdx) {
+        var u_colNames = TS_SQLConnColUtils.names(executor.anchor, executor.tableName);
+        if (u_colNames.isExcuse()) {
+            return u_colNames.toExcuse();
         }
-        return orderDesc(colNames.get(colIdx));
+        if (colIdx < 0 || colIdx >= u_colNames.value().size()) {
+            return TGS_UnionExcuse.of(orderNone());
+        }
+        return TGS_UnionExcuse.of(orderDesc(u_colNames.value().get(colIdx)));
     }
 
     public TS_SQLSelectRowIdxOffset orderAsc(String columnName) {

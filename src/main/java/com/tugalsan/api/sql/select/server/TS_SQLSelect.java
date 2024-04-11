@@ -4,6 +4,7 @@ import java.util.*;
 import com.tugalsan.api.runnable.client.*;
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.sql.conn.server.*;
+import com.tugalsan.api.union.client.TGS_UnionExcuse;
 
 public class TS_SQLSelect {
 
@@ -27,15 +28,18 @@ public class TS_SQLSelect {
         return new TS_SQLSelectWhere(executor);
     }
 
-    public TS_SQLSelectWhere columns(int... colIdxes) {
+    public TGS_UnionExcuse<TS_SQLSelectWhere> columns(int... colIdxes) {
         if (colIdxes == null || colIdxes.length == 0) {
-            return columnsAll();
+            return TGS_UnionExcuse.of(columnsAll());
         }
-        var cnsAll = TS_SQLConnColUtils.names(executor.anchor, executor.tableName);
+        var u_names = TS_SQLConnColUtils.names(executor.anchor, executor.tableName);
+        if (u_names.isExcuse()) {
+            return u_names.toExcuse();
+        }
         Arrays.stream(colIdxes).forEachOrdered(colIdx -> {
-            executor.columnNames.add(cnsAll.get(colIdx));
+            executor.columnNames.add(u_names.value().get(colIdx));
         });
-        return new TS_SQLSelectWhere(executor);
+        return TGS_UnionExcuse.of(new TS_SQLSelectWhere(executor));
     }
 
     public TS_SQLSelectWhere columns(CharSequence... columns) {

@@ -3,6 +3,7 @@ package com.tugalsan.api.sql.select.server;
 import com.tugalsan.api.runnable.client.TGS_RunnableType1;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnColUtils;
 import com.tugalsan.api.sql.group.server.TS_SQLGroupUtils;
+import com.tugalsan.api.union.client.TGS_UnionExcuse;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,9 +14,12 @@ public class TS_SQLSelectGroup {
     }
     private final TS_SQLSelectExecutor executor;
 
-    public TS_SQLSelectOrder group(int colIdx) {
-        var colNames = TS_SQLConnColUtils.names(executor.anchor, executor.tableName);
-        return group(colNames.get(colIdx));
+    public TGS_UnionExcuse<TS_SQLSelectOrder> group(int colIdx) {
+        var u_names = TS_SQLConnColUtils.names(executor.anchor, executor.tableName);
+        if (u_names.isExcuse()) {
+            return u_names.toExcuse();
+        }
+        return TGS_UnionExcuse.of(group(u_names.value().get(colIdx)));
     }
 
     public TS_SQLSelectOrder group(String columnName) {
