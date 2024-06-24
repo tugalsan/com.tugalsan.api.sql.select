@@ -1,6 +1,7 @@
 package com.tugalsan.api.sql.select.server;
 
-import com.tugalsan.api.runnable.client.TGS_RunnableType1;
+
+import com.tugalsan.api.callable.client.TGS_CallableType1Void;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnColUtils;
 import com.tugalsan.api.sql.where.server.TS_SQLWhereConditions;
 import com.tugalsan.api.sql.where.server.TS_SQLWhereGroups;
@@ -13,24 +14,24 @@ public class TS_SQLSelectWhere {
     }
     final private TS_SQLSelectExecutor executor;
 
-    public TS_SQLSelectGroup whereGroupAnd(TGS_RunnableType1<TS_SQLWhereGroups> gAnd) {
+    public TS_SQLSelectGroup whereGroupAnd(TGS_CallableType1Void<TS_SQLWhereGroups> gAnd) {
         executor.where = TS_SQLWhereUtils.where();
         executor.where.groupsAnd(gAnd);
         return new TS_SQLSelectGroup(executor);
     }
 
-    public TS_SQLSelectGroup whereGroupOr(TGS_RunnableType1<TS_SQLWhereGroups> gOr) {
+    public TS_SQLSelectGroup whereGroupOr(TGS_CallableType1Void<TS_SQLWhereGroups> gOr) {
         executor.where = TS_SQLWhereUtils.where();
         executor.where.groupsOr(gOr);
         return new TS_SQLSelectGroup(executor);
     }
 
-    public TS_SQLSelectGroup whereConditionAnd(TGS_RunnableType1<TS_SQLWhereConditions> cAnd) {
+    public TS_SQLSelectGroup whereConditionAnd(TGS_CallableType1Void<TS_SQLWhereConditions> cAnd) {
         whereGroupAnd(where -> where.conditionsAnd(cAnd));
         return new TS_SQLSelectGroup(executor);
     }
 
-    public TS_SQLSelectGroup whereConditionOr(TGS_RunnableType1<TS_SQLWhereConditions> cOr) {
+    public TS_SQLSelectGroup whereConditionOr(TGS_CallableType1Void<TS_SQLWhereConditions> cOr) {
         whereGroupOr(where -> where.conditionsOr(cOr));
         return new TS_SQLSelectGroup(executor);
     }

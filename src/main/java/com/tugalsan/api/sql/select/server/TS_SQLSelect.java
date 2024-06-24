@@ -1,7 +1,8 @@
 package com.tugalsan.api.sql.select.server;
 
+import com.tugalsan.api.callable.client.TGS_CallableType1Void;
 import java.util.*;
-import com.tugalsan.api.runnable.client.*;
+
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.sql.conn.server.*;
 
@@ -14,7 +15,7 @@ public class TS_SQLSelect {
     }
     final private TS_SQLSelectExecutor executor;
 
-    public TS_SQLSelectWhere columns(TGS_RunnableType1<List<String>> columnNames) {
+    public TS_SQLSelectWhere columns(TGS_CallableType1Void<List<String>> columnNames) {
         columnNames.run(executor.columnNames);
         return new TS_SQLSelectWhere(executor);
     }

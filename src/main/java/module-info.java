@@ -1,6 +1,6 @@
 module com.tugalsan.api.sql.select {
     requires java.sql;
-    requires com.tugalsan.api.runnable;
+    
     requires com.tugalsan.api.log;
     requires com.tugalsan.api.list;
     requires com.tugalsan.api.tuple;

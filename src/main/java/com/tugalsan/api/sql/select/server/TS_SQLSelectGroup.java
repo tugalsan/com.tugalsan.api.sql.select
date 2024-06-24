@@ -1,6 +1,7 @@
 package com.tugalsan.api.sql.select.server;
 
-import com.tugalsan.api.runnable.client.TGS_RunnableType1;
+
+import com.tugalsan.api.callable.client.TGS_CallableType1Void;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnColUtils;
 import com.tugalsan.api.sql.group.server.TS_SQLGroupUtils;
 import java.util.Arrays;
@@ -24,7 +25,7 @@ public class TS_SQLSelectGroup {
         });
     }
 
-    public TS_SQLSelectOrder group(TGS_RunnableType1<List<String>> columnNames) {
+    public TS_SQLSelectOrder group(TGS_CallableType1Void<List<String>> columnNames) {
         executor.group = TS_SQLGroupUtils.group();
         columnNames.run(executor.group.columnNames);
         return new TS_SQLSelectOrder(executor);

@@ -1,6 +1,9 @@
 package com.tugalsan.api.sql.select.server;
 
-import com.tugalsan.api.runnable.client.*;
+
+import com.tugalsan.api.callable.client.TGS_CallableType1Void;
+import com.tugalsan.api.callable.client.TGS_CallableType2Void;
+import com.tugalsan.api.callable.client.TGS_CallableType3Void;
 import com.tugalsan.api.list.client.*;
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.tuple.client.*;
@@ -74,7 +77,7 @@ public class TS_SQLSelectExecutor {
         return stmt;
     }
 
-    public void walk(TGS_RunnableType1<TS_SQLResultSet> onEmpty, TGS_RunnableType1<TS_SQLResultSet> rs) {
+    public void walk(TGS_CallableType1Void<TS_SQLResultSet> onEmpty, TGS_CallableType1Void<TS_SQLResultSet> rs) {
         TS_SQLSelectStmtUtils.select(anchor, toString(), fillStmt -> {
             if (where != null) {
                 where.fill(fillStmt, 0);
@@ -93,15 +96,15 @@ public class TS_SQLSelectExecutor {
         });
     }
 
-    public void walkRows(TGS_RunnableType1<TS_SQLResultSet> onEmpty, TGS_RunnableType2<TS_SQLResultSet, Integer> rs_ri) {
+    public void walkRows(TGS_CallableType1Void<TS_SQLResultSet> onEmpty, TGS_CallableType2Void<TS_SQLResultSet, Integer> rs_ri) {
         walk(onEmpty, rs -> rs.walkRows(null, ri -> rs_ri.run(rs, ri)));
     }
 
-    public void walkCells(TGS_RunnableType1<TS_SQLResultSet> onEmpty, TGS_RunnableType3<TS_SQLResultSet, Integer, Integer> rs_ri_ci) {
+    public void walkCells(TGS_CallableType1Void<TS_SQLResultSet> onEmpty, TGS_CallableType3Void<TS_SQLResultSet, Integer, Integer> rs_ri_ci) {
         walk(onEmpty, rs -> rs.walkCells(null, (ri, ci) -> rs_ri_ci.run(rs, ri, ci)));
     }
 
-    public void walkCols(TGS_RunnableType1<TS_SQLResultSet> onEmpty, TGS_RunnableType2<TS_SQLResultSet, Integer> rs_ci) {
+    public void walkCols(TGS_CallableType1Void<TS_SQLResultSet> onEmpty, TGS_CallableType2Void<TS_SQLResultSet, Integer> rs_ci) {
         walk(onEmpty, rs -> rs.walkCols(null, ci -> rs_ci.run(rs, ci)));
     }
 
