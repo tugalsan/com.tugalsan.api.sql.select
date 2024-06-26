@@ -43,7 +43,7 @@ public class TS_SQLSelectExecutor {
             return "*";
         }
         TS_SQLSanitizeUtils.sanitize(columnNames);
-        return TGS_StringUtils.toString(columnNames, ",");
+        return TGS_StringUtils.cmn().toString(columnNames, ",");
     }
 
     @Override
