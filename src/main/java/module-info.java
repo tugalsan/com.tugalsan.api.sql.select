@@ -6,7 +6,7 @@ module com.tugalsan.api.sql.select {
     requires com.tugalsan.api.tuple;
     requires com.tugalsan.api.string;
     requires com.tugalsan.api.time;
-    requires com.tugalsan.api.callable;
+    requires com.tugalsan.api.function;
     requires com.tugalsan.api.sql.conn;
     requires com.tugalsan.api.sql.cell;
     requires com.tugalsan.api.sql.order;
