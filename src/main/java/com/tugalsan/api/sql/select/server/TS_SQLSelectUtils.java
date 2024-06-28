@@ -8,6 +8,10 @@ public class TS_SQLSelectUtils {
         return new TS_SQLSelect(anchor, tableName);
     }
 
+    public static String columnEmpty() {
+        return "''";
+    }
+
 //    public static void test() {
 //        TS_SQLSelectUtils.select(null, "tn").columns(columnNames -> {
 //            columnNames.add("ali gel");
