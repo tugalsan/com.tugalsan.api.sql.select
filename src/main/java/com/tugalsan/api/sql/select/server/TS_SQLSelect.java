@@ -44,7 +44,7 @@ public class TS_SQLSelect {
             return columnsAll();
         }
         Arrays.stream(columns).forEachOrdered(cn -> {
-            var input = cn.toString();
+            var input = cn == null ? TS_SQLSelectUtils.columnEmpty() : cn.toString();
             d.ci("columns(CharSequence... columns)", input);
             executor.columnNames.add(input);
         });
