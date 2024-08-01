@@ -5,6 +5,7 @@ import java.util.*;
 
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.sql.conn.server.*;
+import com.tugalsan.api.string.client.TGS_StringUtils;
 
 public class TS_SQLSelect {
 
@@ -24,7 +25,7 @@ public class TS_SQLSelect {
         if (columns == null || columns.isEmpty()) {
             return columnsAll();
         }
-        columns.stream().forEachOrdered(cn -> executor.columnNames.add(cn));
+        columns.stream().forEachOrdered(cn -> executor.columnNames.add(TGS_StringUtils.cmn().isNullOrEmpty(cn) ? TS_SQLSelectUtils.columnEmpty() : cn));
         return new TS_SQLSelectWhere(executor);
     }
 
@@ -34,7 +35,11 @@ public class TS_SQLSelect {
         }
         var cnsAll = TS_SQLConnColUtils.names(executor.anchor, executor.tableName);
         Arrays.stream(colIdxes).forEachOrdered(colIdx -> {
-            executor.columnNames.add(cnsAll.get(colIdx));
+            if (colIdx == -1) {
+                executor.columnNames.add(TS_SQLSelectUtils.columnEmpty());
+            } else {
+                executor.columnNames.add(cnsAll.get(colIdx));
+            }
         });
         return new TS_SQLSelectWhere(executor);
     }
@@ -44,7 +49,7 @@ public class TS_SQLSelect {
             return columnsAll();
         }
         Arrays.stream(columns).forEachOrdered(cn -> {
-            var input = cn == null ? TS_SQLSelectUtils.columnEmpty() : cn.toString();
+            var input = TGS_StringUtils.cmn().isNullOrEmpty(cn) ? TS_SQLSelectUtils.columnEmpty() : cn.toString();
             d.ci("columns(CharSequence... columns)", input);
             executor.columnNames.add(input);
         });
@@ -55,7 +60,7 @@ public class TS_SQLSelect {
         if (columns == null || columns.length == 0) {
             return columnsAll();
         }
-        Arrays.stream(columns).forEachOrdered(cn -> executor.columnNames.add(cn));
+        Arrays.stream(columns).forEachOrdered(cn -> executor.columnNames.add(TGS_StringUtils.cmn().isNullOrEmpty(cn) ? TS_SQLSelectUtils.columnEmpty() : cn));
         return new TS_SQLSelectWhere(executor);
     }
 
