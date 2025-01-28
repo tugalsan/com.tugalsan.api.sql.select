@@ -1,6 +1,5 @@
 package com.tugalsan.api.sql.select.server;
 
-
 import com.tugalsan.api.function.client.TGS_Func_In1;
 import com.tugalsan.api.function.client.TGS_Func_In2;
 import com.tugalsan.api.function.client.TGS_Func_In3;
@@ -16,6 +15,7 @@ import com.tugalsan.api.sql.resultset.server.*;
 import com.tugalsan.api.sql.sanitize.server.*;
 import com.tugalsan.api.sql.where.server.*;
 import com.tugalsan.api.string.client.*;
+import com.tugalsan.api.thread.server.sync.TS_ThreadSyncTrigger;
 import com.tugalsan.api.time.client.*;
 import java.util.*;
 
@@ -174,15 +174,15 @@ public class TS_SQLSelectExecutor {
         return pack.value0 == null ? TGS_ListUtils.of() : pack.value0;
     }
 
-    public List<List<TGS_SQLCellAbstract>> getTbl(boolean skipBytes) {
+    public List<List<TGS_SQLCellAbstract>> getTbl(TS_ThreadSyncTrigger servletKillTrigger, boolean skipBytes) {
         TGS_Tuple1<List<List<TGS_SQLCellAbstract>>> pack = new TGS_Tuple1();
-        walk(null, rs -> pack.value0 = rs.table.get(skipBytes));
+        walk(null, rs -> pack.value0 = rs.table.get(servletKillTrigger, skipBytes));
         return pack.value0 == null ? TGS_ListUtils.of() : pack.value0;
     }
 
-    public List<List<TGS_SQLCellAbstract>> getTbl() {
+    public List<List<TGS_SQLCellAbstract>> getTbl(TS_ThreadSyncTrigger servletKillTrigger) {
         TGS_Tuple1<List<List<TGS_SQLCellAbstract>>> pack = new TGS_Tuple1();
-        walk(null, rs -> pack.value0 = rs.table.get());
+        walk(null, rs -> pack.value0 = rs.table.get(servletKillTrigger));
         return pack.value0 == null ? TGS_ListUtils.of() : pack.value0;
     }
 

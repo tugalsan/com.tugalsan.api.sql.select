@@ -4,6 +4,7 @@ module com.tugalsan.api.sql.select {
     requires com.tugalsan.api.log;
     requires com.tugalsan.api.list;
     requires com.tugalsan.api.tuple;
+    requires com.tugalsan.api.thread;
     requires com.tugalsan.api.string;
     requires com.tugalsan.api.time;
     requires com.tugalsan.api.function;
