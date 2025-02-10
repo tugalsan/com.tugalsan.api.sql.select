@@ -1,8 +1,8 @@
 package com.tugalsan.api.sql.select.server;
 
-import com.tugalsan.api.function.client.TGS_Func_In1;
-import com.tugalsan.api.function.client.TGS_Func_In2;
-import com.tugalsan.api.function.client.TGS_Func_In3;
+import com.tugalsan.api.function.client.maythrow.uncheckedexceptions.TGS_FuncMTUCE_In1;
+import com.tugalsan.api.function.client.maythrow.uncheckedexceptions.TGS_FuncMTUCE_In2;
+import com.tugalsan.api.function.client.maythrow.uncheckedexceptions.TGS_FuncMTUCE_In3;
 import com.tugalsan.api.list.client.*;
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.tuple.client.*;
@@ -77,7 +77,7 @@ public class TS_SQLSelectExecutor {
         return stmt;
     }
 
-    public void walk(TGS_Func_In1<TS_SQLResultSet> onEmpty, TGS_Func_In1<TS_SQLResultSet> rs) {
+    public void walk(TGS_FuncMTUCE_In1<TS_SQLResultSet> onEmpty, TGS_FuncMTUCE_In1<TS_SQLResultSet> rs) {
         TS_SQLSelectStmtUtils.select(anchor, toString(), fillStmt -> {
             if (where != null) {
                 where.fill(fillStmt, 0);
@@ -96,15 +96,15 @@ public class TS_SQLSelectExecutor {
         });
     }
 
-    public void walkRows(TGS_Func_In1<TS_SQLResultSet> onEmpty, TGS_Func_In2<TS_SQLResultSet, Integer> rs_ri) {
+    public void walkRows(TGS_FuncMTUCE_In1<TS_SQLResultSet> onEmpty, TGS_FuncMTUCE_In2<TS_SQLResultSet, Integer> rs_ri) {
         walk(onEmpty, rs -> rs.walkRows(null, ri -> rs_ri.run(rs, ri)));
     }
 
-    public void walkCells(TGS_Func_In1<TS_SQLResultSet> onEmpty, TGS_Func_In3<TS_SQLResultSet, Integer, Integer> rs_ri_ci) {
+    public void walkCells(TGS_FuncMTUCE_In1<TS_SQLResultSet> onEmpty, TGS_FuncMTUCE_In3<TS_SQLResultSet, Integer, Integer> rs_ri_ci) {
         walk(onEmpty, rs -> rs.walkCells(null, (ri, ci) -> rs_ri_ci.run(rs, ri, ci)));
     }
 
-    public void walkCols(TGS_Func_In1<TS_SQLResultSet> onEmpty, TGS_Func_In2<TS_SQLResultSet, Integer> rs_ci) {
+    public void walkCols(TGS_FuncMTUCE_In1<TS_SQLResultSet> onEmpty, TGS_FuncMTUCE_In2<TS_SQLResultSet, Integer> rs_ci) {
         walk(onEmpty, rs -> rs.walkCols(null, ci -> rs_ci.run(rs, ci)));
     }
 

@@ -1,7 +1,7 @@
 package com.tugalsan.api.sql.select.server;
 
 
-import com.tugalsan.api.function.client.TGS_Func_In1;
+import com.tugalsan.api.function.client.maythrow.uncheckedexceptions.TGS_FuncMTUCE_In1;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnColUtils;
 import com.tugalsan.api.sql.group.server.TS_SQLGroupUtils;
 import java.util.Arrays;
@@ -25,7 +25,7 @@ public class TS_SQLSelectGroup {
         });
     }
 
-    public TS_SQLSelectOrder group(TGS_Func_In1<List<String>> columnNames) {
+    public TS_SQLSelectOrder group(TGS_FuncMTUCE_In1<List<String>> columnNames) {
         executor.group = TS_SQLGroupUtils.group();
         columnNames.run(executor.group.columnNames);
         return new TS_SQLSelectOrder(executor);

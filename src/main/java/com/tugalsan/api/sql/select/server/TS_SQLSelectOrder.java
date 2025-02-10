@@ -1,7 +1,7 @@
 package com.tugalsan.api.sql.select.server;
 
 
-import com.tugalsan.api.function.client.TGS_Func_In1;
+import com.tugalsan.api.function.client.maythrow.uncheckedexceptions.TGS_FuncMTUCE_In1;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnColUtils;
 import com.tugalsan.api.sql.order.server.TS_SQLOrderUtils;
 import java.util.Arrays;
@@ -78,13 +78,13 @@ public class TS_SQLSelectOrder {
         });
     }
 
-    public TS_SQLSelectRowIdxOffset orderAsc(TGS_Func_In1<List<String>> columnNames) {
+    public TS_SQLSelectRowIdxOffset orderAsc(TGS_FuncMTUCE_In1<List<String>> columnNames) {
         executor.order = TS_SQLOrderUtils.asc();
         columnNames.run(executor.order.columnNames);
         return new TS_SQLSelectRowIdxOffset(executor);
     }
 
-    public TS_SQLSelectRowIdxOffset orderDesc(TGS_Func_In1<List<String>> columnNames) {
+    public TS_SQLSelectRowIdxOffset orderDesc(TGS_FuncMTUCE_In1<List<String>> columnNames) {
         executor.order = TS_SQLOrderUtils.desc();
         columnNames.run(executor.order.columnNames);
         return new TS_SQLSelectRowIdxOffset(executor);
