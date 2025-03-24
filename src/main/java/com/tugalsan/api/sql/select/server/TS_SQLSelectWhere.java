@@ -1,7 +1,7 @@
 package com.tugalsan.api.sql.select.server;
 
 
-import com.tugalsan.api.function.client.maythrow.uncheckedexceptions.TGS_FuncMTUCE_In1;
+import com.tugalsan.api.function.client.maythrowexceptions.unchecked.TGS_FuncMTU_In1;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnColUtils;
 import com.tugalsan.api.sql.where.server.TS_SQLWhereConditions;
 import com.tugalsan.api.sql.where.server.TS_SQLWhereGroups;
@@ -14,24 +14,24 @@ public class TS_SQLSelectWhere {
     }
     final private TS_SQLSelectExecutor executor;
 
-    public TS_SQLSelectGroup whereGroupAnd(TGS_FuncMTUCE_In1<TS_SQLWhereGroups> gAnd) {
+    public TS_SQLSelectGroup whereGroupAnd(TGS_FuncMTU_In1<TS_SQLWhereGroups> gAnd) {
         executor.where = TS_SQLWhereUtils.where();
         executor.where.groupsAnd(gAnd);
         return new TS_SQLSelectGroup(executor);
     }
 
-    public TS_SQLSelectGroup whereGroupOr(TGS_FuncMTUCE_In1<TS_SQLWhereGroups> gOr) {
+    public TS_SQLSelectGroup whereGroupOr(TGS_FuncMTU_In1<TS_SQLWhereGroups> gOr) {
         executor.where = TS_SQLWhereUtils.where();
         executor.where.groupsOr(gOr);
         return new TS_SQLSelectGroup(executor);
     }
 
-    public TS_SQLSelectGroup whereConditionAnd(TGS_FuncMTUCE_In1<TS_SQLWhereConditions> cAnd) {
+    public TS_SQLSelectGroup whereConditionAnd(TGS_FuncMTU_In1<TS_SQLWhereConditions> cAnd) {
         whereGroupAnd(where -> where.conditionsAnd(cAnd));
         return new TS_SQLSelectGroup(executor);
     }
 
-    public TS_SQLSelectGroup whereConditionOr(TGS_FuncMTUCE_In1<TS_SQLWhereConditions> cOr) {
+    public TS_SQLSelectGroup whereConditionOr(TGS_FuncMTU_In1<TS_SQLWhereConditions> cOr) {
         whereGroupOr(where -> where.conditionsOr(cOr));
         return new TS_SQLSelectGroup(executor);
     }
