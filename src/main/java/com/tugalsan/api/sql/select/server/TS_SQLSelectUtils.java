@@ -1,8 +1,13 @@
 package com.tugalsan.api.sql.select.server;
 
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchor;
+import com.tugalsan.api.sql.conn.server.TS_SQLConnMethodUtils;
 
 public class TS_SQLSelectUtils {
+
+    private TS_SQLSelectUtils() {
+
+    }
 
     public static TS_SQLSelect select(TS_SQLConnAnchor anchor, CharSequence tableName) {
         return new TS_SQLSelect(anchor, tableName);

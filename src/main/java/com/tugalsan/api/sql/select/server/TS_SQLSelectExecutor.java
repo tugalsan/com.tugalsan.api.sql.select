@@ -56,7 +56,7 @@ public class TS_SQLSelectExecutor {
         d.ci("toString", "order", order);
         d.ci("toString", "rowIdxOffset", rowIdxOffset);
         d.ci("toString", "rowSizeLimit", rowSizeLimit);
-        var sb = new StringBuilder("SELECT ").append(lineColNames).append(" FROM ").append(tableName);
+        var sb = new StringBuilder(anchor.tagSelectAndSpace()).append(lineColNames).append(" FROM ").append(tableName);
         if (where != null) {
             sb.append(" ").append(where);
         }
