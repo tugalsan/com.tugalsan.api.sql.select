@@ -1,7 +1,6 @@
 package com.tugalsan.api.sql.select.server;
 
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchor;
-import com.tugalsan.api.sql.conn.server.TS_SQLConnMethodUtils;
 
 public class TS_SQLSelectUtils {
 
