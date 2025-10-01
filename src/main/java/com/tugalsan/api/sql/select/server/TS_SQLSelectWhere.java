@@ -1,11 +1,8 @@
 package com.tugalsan.api.sql.select.server;
 
-
-import com.tugalsan.api.function.client.maythrowexceptions.unchecked.TGS_FuncMTU_In1;
-import com.tugalsan.api.sql.conn.server.TS_SQLConnColUtils;
-import com.tugalsan.api.sql.where.server.TS_SQLWhereConditions;
-import com.tugalsan.api.sql.where.server.TS_SQLWhereGroups;
-import com.tugalsan.api.sql.where.server.TS_SQLWhereUtils;
+import module com.tugalsan.api.function;
+import module com.tugalsan.api.sql.conn;
+import module com.tugalsan.api.sql.where;
 
 public class TS_SQLSelectWhere {
 

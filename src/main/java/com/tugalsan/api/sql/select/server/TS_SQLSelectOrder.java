@@ -1,11 +1,9 @@
 package com.tugalsan.api.sql.select.server;
 
-
-import com.tugalsan.api.function.client.maythrowexceptions.unchecked.TGS_FuncMTU_In1;
-import com.tugalsan.api.sql.conn.server.TS_SQLConnColUtils;
-import com.tugalsan.api.sql.order.server.TS_SQLOrderUtils;
-import java.util.Arrays;
-import java.util.List;
+import module com.tugalsan.api.function;
+import module com.tugalsan.api.sql.order;
+import module com.tugalsan.api.sql.conn;
+import java.util.*;
 
 public class TS_SQLSelectOrder {
 

@@ -1,22 +1,20 @@
 package com.tugalsan.api.sql.select.server;
 
-import com.tugalsan.api.function.client.maythrowexceptions.unchecked.TGS_FuncMTU_In1;
-import com.tugalsan.api.function.client.maythrowexceptions.unchecked.TGS_FuncMTU_In2;
-import com.tugalsan.api.function.client.maythrowexceptions.unchecked.TGS_FuncMTU_In3;
-import com.tugalsan.api.list.client.*;
-import com.tugalsan.api.log.server.*;
-import com.tugalsan.api.tuple.client.*;
-import com.tugalsan.api.sql.col.typed.client.*;
-import com.tugalsan.api.sql.cell.client.*;
-import com.tugalsan.api.sql.order.server.*;
-import com.tugalsan.api.sql.conn.server.*;
-import com.tugalsan.api.sql.group.server.*;
-import com.tugalsan.api.sql.resultset.server.*;
-import com.tugalsan.api.sql.sanitize.server.*;
-import com.tugalsan.api.sql.where.server.*;
-import com.tugalsan.api.string.client.*;
-import com.tugalsan.api.thread.server.sync.TS_ThreadSyncTrigger;
-import com.tugalsan.api.time.client.*;
+import module com.tugalsan.api.function;
+import module com.tugalsan.api.log;
+import module com.tugalsan.api.list;
+import module com.tugalsan.api.tuple;
+import module com.tugalsan.api.sql.col.typed;
+import module com.tugalsan.api.sql.cell;
+import module com.tugalsan.api.sql.order;
+import module com.tugalsan.api.sql.conn;
+import module com.tugalsan.api.sql.group;
+import module com.tugalsan.api.sql.resultset;
+import module com.tugalsan.api.sql.sanitize;
+import module com.tugalsan.api.sql.where;
+import module com.tugalsan.api.thread;
+import module com.tugalsan.api.string;
+import module com.tugalsan.api.time;
 import java.util.*;
 
 public class TS_SQLSelectExecutor {
