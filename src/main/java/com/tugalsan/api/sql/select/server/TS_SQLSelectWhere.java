@@ -23,12 +23,12 @@ public class TS_SQLSelectWhere {
         return new TS_SQLSelectGroup(executor);
     }
 
-    public TS_SQLSelectGroup whereConditionAnd(TGS_FuncMTU_In1<TS_SQLWhereConditions> cAnd) {
+    public TS_SQLSelectGroup whereConditionAnd(TGS_FuncMTU_In1<TS_SQLWhereConditionsAnd> cAnd) {
         whereGroupAnd(where -> where.conditionsAnd(cAnd));
         return new TS_SQLSelectGroup(executor);
     }
 
-    public TS_SQLSelectGroup whereConditionOr(TGS_FuncMTU_In1<TS_SQLWhereConditions> cOr) {
+    public TS_SQLSelectGroup whereConditionOr(TGS_FuncMTU_In1<TS_SQLWhereConditionsOr> cOr) {
         whereGroupOr(where -> where.conditionsOr(cOr));
         return new TS_SQLSelectGroup(executor);
     }
